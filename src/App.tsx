@@ -5,7 +5,6 @@ import { ProjectsPage } from './components/projects/ProjectsPage'
 import { ProjectDetailPage } from './components/projects/ProjectDetailPage'
 import { NotFoundPage } from './components/pages/NotFoundPage'
 import { Contact } from './components/sections/Contact'
-import { SiteFooter } from './components/layout/SiteFooter'
 import { SiteHeader } from './components/layout/SiteHeader'
 import { projects } from './data/projects'
 import { portfolio } from './data/portfolio'
@@ -100,7 +99,6 @@ function App() {
         <Skills />
         <Contact />
       </main>
-      <SiteFooter />
     </>
   )
 }

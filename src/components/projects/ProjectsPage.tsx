@@ -1,6 +1,5 @@
 import { projects } from '../../data/projects'
 import { ProjectCardLink } from './ProjectCard'
-import { SiteFooter } from '../layout/SiteFooter'
 import { SiteHeader } from '../layout/SiteHeader'
 
 export function ProjectsPage() {
@@ -19,7 +18,6 @@ export function ProjectsPage() {
           ))}
         </div>
       </main>
-      <SiteFooter />
     </>
   )
 }

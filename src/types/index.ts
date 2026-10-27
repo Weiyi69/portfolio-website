@@ -1,4 +1,4 @@
-export type ProjectVisual = 'chat' | 'construction' | 'management' | 'retail'
+export type ProjectVisual = 'chat' | 'construction' | 'retail'
 
 export interface Project {
   number: string

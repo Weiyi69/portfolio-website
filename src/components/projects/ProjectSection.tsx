@@ -6,8 +6,7 @@ import type { Project } from '../../types'
 function cardVariant(visual: Project['visual']): 'website-promo' | 'messaging-promo' | 'retail-promo' | undefined {
   if (visual === 'construction') return 'website-promo'
   if (visual === 'chat') return 'messaging-promo'
-  if (visual === 'retail') return 'retail-promo'
-  return undefined
+  return visual === 'retail' ? 'retail-promo' : undefined
 }
 
 export function ProjectSection() {
@@ -21,13 +20,14 @@ export function ProjectSection() {
           </div>
           <a className="text-link" href="/projects">All projects <ArrowUpRight size={16} aria-hidden="true" /></a>
         </div>
-        <div className="featured-project-grid">
-          {projects.map((project) => (
+        <div className="featured-project-grid" aria-label="Featured project cards">
+          {projects.map((project, index) => (
             <ProjectCardLink
               key={project.slug}
               project={project}
               variant={cardVariant(project.visual)}
               showArtworkIndex
+              className={`featured-project-card is-${index === 0 ? 'center' : index === 1 ? 'right' : 'left'}`}
             />
           ))}
         </div>

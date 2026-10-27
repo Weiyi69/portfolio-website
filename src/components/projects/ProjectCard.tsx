@@ -1,4 +1,3 @@
-import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '../../types'
 
 interface ProjectCardProps {
@@ -19,27 +18,20 @@ export function ProjectArtwork({ project, className = '', showIndex = true }: Pr
       className={`project-art art-${project.accent}${className ? ` ${className}` : ''}`}
       aria-hidden="true"
     >
-      {project.visual === 'management' ? (
-        <div className="project-art-placeholder">
-          <span>PROJECT / TASKS</span>
-          <strong>Work, in<br />good order.</strong>
-        </div>
-      ) : (
-        <img
-          className="project-art-image"
-          src={
-            project.visual === 'retail'
-              ? '/images/projects/retailflow-project-art.jpg'
-              : project.visual === 'chat'
-                ? '/images/projects/converse-project-art.jpg'
-                : '/images/projects/sab-builders-project-art.jpg'
-          }
-          alt=""
-          loading="lazy"
-          decoding="async"
-        />
-      )}
-      {showIndex && <span className="art-index">{project.number} / 04</span>}
+      <img
+        className="project-art-image"
+        src={
+          project.visual === 'retail'
+            ? '/images/projects/retailflow-project-art.jpg'
+            : project.visual === 'chat'
+              ? '/images/projects/converse-project-art.jpg'
+              : '/images/projects/sab-builders-project-art.jpg'
+        }
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      {showIndex && <span className="art-index">{project.number} / 03</span>}
     </div>
   )
 }
@@ -92,9 +84,9 @@ export function ProjectCard({
         <p>{project.summary}</p>
         <div className="converse-app-preview">
           <img
-            className="converse-preview-image"
-            src="/projects/chat-app/converse-landing.png"
-            alt="Converse messaging app conversation list"
+            className="converse-project-art-image"
+            src="/images/projects/converse-project-art.jpg"
+            alt="Converse project artwork showing its messaging app on a laptop"
             loading="lazy"
             decoding="async"
           />
@@ -154,13 +146,13 @@ interface ProjectCardLinkProps {
   project: Project
   variant?: ProjectCardProps['variant']
   showArtworkIndex?: boolean
+  className?: string
 }
 
-export function ProjectCardLink({ project, variant, showArtworkIndex = true }: ProjectCardLinkProps) {
+export function ProjectCardLink({ project, variant, showArtworkIndex = true, className = '' }: ProjectCardLinkProps) {
   return (
-    <a className="project-card-link" href={`/projects/${project.slug}`}>
+    <a className={`project-card-link${className ? ` ${className}` : ''}`} href={`/projects/${project.slug}`}>
       <ProjectCard project={project} variant={variant} showArtworkIndex={showArtworkIndex} />
-      <span className="project-card-link-label">View project <ArrowUpRight size={15} aria-hidden="true" /></span>
     </a>
   )
 }

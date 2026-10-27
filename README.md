@@ -80,7 +80,7 @@ Edit [`src/data/portfolio.ts`](./src/data/portfolio.ts):
 
 The portrait is `public/images/profile.png`. Replace it with an approved local portrait, keeping the same path or updating `ParticlePortrait`. The site shows a graceful fallback if the image is unavailable.
 
-Project content, technology stacks, and optional `demoUrl`/`sourceUrl` fields are in `src/data/projects.ts`. Add only real links. Screenshot lists are in `src/data/converseScreens.ts`, `src/data/retailFlowScreens.ts`, and `src/data/sabBuildersScreens.ts`. Project Management System currently has no screenshot assets in this workspace; add real images under `public/images/projects/` and update its detail component when available.
+Project content, technology stacks, and optional `demoUrl`/`sourceUrl` fields are in `src/data/projects.ts`. Add only real links. Screenshot lists are in `src/data/converseScreens.ts`, `src/data/retailFlowScreens.ts`, and `src/data/sabBuildersScreens.ts`.
 
 The social preview currently uses the local portrait image in `index.html`. Replace the Open Graph and Twitter image paths with an approved preview image when available. No email, résumé file, demo URLs, or source-code URLs have been invented. Project descriptions reflect information supplied for this portfolio and have not been independently checked against the source repositories of the applications.
 

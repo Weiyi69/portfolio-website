@@ -71,21 +71,4 @@ export const projects: Project[] = [
       'Product details, cart, checkout, and order confirmation',
     ],
   },
-  {
-    number: '04',
-    slug: 'project-management-system',
-    name: 'Project Management System',
-    category: 'Project and task management',
-    summary: 'A project and task management application built with Laravel.',
-    stack: ['PHP', 'Laravel', 'Blade', 'JavaScript', 'Bootstrap', 'Vite', 'Eloquent ORM'],
-    accent: 'lavender',
-    visual: 'management',
-    overview:
-      'A project and task management application intended to organize work within projects.',
-    contribution:
-      'The supplied project scope centers on a Laravel application for project and task management.',
-    technicalApproach:
-      'The supplied stack combines Laravel, Blade, and Eloquent ORM with JavaScript, Bootstrap, and Vite.',
-    features: ['Project and task management'],
-  },
 ]

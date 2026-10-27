@@ -5,15 +5,15 @@ export const stackCategories = [
   },
   {
     title: 'Backend',
-    items: ['Node.js', 'Express', 'Python', 'Flask', 'PHP', 'Laravel', 'REST APIs', 'Socket.IO'],
+    items: ['Node.js', 'Express', 'Python', 'Flask', 'PHP', 'Laravel', 'REST APIs', 'Socket.IO', 'MongoDB', 'MySQL', 'SQLite', 'PostgreSQL', 'JWT'],
   },
   {
-    title: 'Databases',
-    items: ['MongoDB', 'MySQL', 'SQLite', 'PostgreSQL'],
+    title: 'Developer tools',
+    items: ['Git', 'GitHub'],
   },
   {
-    title: 'Tools & security',
-    items: ['Git', 'GitHub', 'JWT', 'Session authentication', 'Argon2', 'CSRF protection', 'Automated testing'],
+    title: 'Security',
+    items: ['Session authentication', 'Argon2', 'CSRF protection', 'Automated testing'],
   },
   {
     title: 'Cloud',

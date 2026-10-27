@@ -10,7 +10,7 @@ export const portfolio: PortfolioProfile = {
   availability: 'Seeking full-time opportunities',
   githubUrl: 'https://github.com/Weiyi69',
   linkedinUrl: 'https://www.linkedin.com/in/vincent-sebastian-0a63813aa/',
-  email: '',
+  email: 'vjsebastiaaan@gmail.com',
   resumeUrl: '',
   siteUrl: '',
 }

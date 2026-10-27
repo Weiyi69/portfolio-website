@@ -22,7 +22,6 @@ export function Hero() {
       </div>
       <div className="hero-visual">
         <ParticlePortrait />
-        <p className="hero-caption">Thoughtful digital products<br />from interface to backend.</p>
       </div>
     </section>
   )
@@ -51,10 +50,8 @@ export function Skills() {
       <div className="page-width">
         <div className="section-heading skills-heading">
           <div>
-            <p className="section-kicker">TOOLS I WORK WITH</p>
-            <h2 id="skills-title">Skills &amp; technologies</h2>
+            <h2 id="skills-title">Tech Stack</h2>
           </div>
-          <p>A practical toolkit for designing, building, and testing full-stack applications.</p>
         </div>
         <div className="stack-groups">
           {stackCategories.map(({ title, items }, index) => (
@@ -68,7 +65,6 @@ export function Skills() {
             </section>
           ))}
         </div>
-        <p className="skills-note">AWS is listed as a technology; no professional cloud deployment experience is implied.</p>
       </div>
     </section>
   )

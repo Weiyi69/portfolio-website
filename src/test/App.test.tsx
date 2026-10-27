@@ -15,14 +15,21 @@ describe('portfolio application', () => {
 
     expect(screen.getByRole('heading', { name: portfolio.name })).toBeInTheDocument()
     expect(screen.getByRole('navigation', { name: 'Main navigation' })).toBeInTheDocument()
+    expect(screen.getByRole('navigation', { name: 'Main navigation' }).querySelector('a[href="#skills"]')).toHaveTextContent('Stack')
     expect(screen.getByRole('heading', { name: /Curious across the stack.*Grounded in useful work/ })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Skills & technologies' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Tech Stack' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: "Let's build something useful." })).toBeInTheDocument()
     expect(document.title).toBe('Vincent Sebastian — Full-Stack Developer')
     expect(screen.getAllByRole('link', { name: /GitHub/ })[0]).toHaveAttribute('href', portfolio.githubUrl)
     expect(screen.getAllByRole('link', { name: /LinkedIn/ })[0]).toHaveAttribute('href', portfolio.linkedinUrl)
-    expect(screen.getByText('Add a professional email before publishing.')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /vjsebastiaaan@gmail\.com/ })).toHaveAttribute(
+      'href',
+      'mailto:vjsebastiaaan@gmail.com',
+    )
     expect(screen.queryByRole('link', { name: /resume/i })).not.toBeInTheDocument()
+    expect(screen.queryByText(/Thoughtful digital products|from interface to backend/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/no professional cloud deployment experience is implied/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole('contentinfo')).not.toBeInTheDocument()
   })
 
   it('shows restrained, categorized skills including cloud and security', () => {
@@ -37,19 +44,27 @@ describe('portfolio application', () => {
         expect(within(group).getByText(item, { exact: true })).toBeInTheDocument()
       }
     }
-    expect(within(skills as HTMLElement).getByText(/no professional cloud deployment experience is implied/i)).toBeInTheDocument()
+    expect(within(skills as HTMLElement).queryByText(/no professional cloud deployment experience is implied/i)).not.toBeInTheDocument()
   })
 
-  it('makes all four home project cards link to their detail pages', () => {
+  it('makes all three home project cards link to their detail pages', () => {
     render(<App />)
 
     const work = document.getElementById('work')
     expect(work).not.toBeNull()
+    expect(within(work as HTMLElement).getByRole('link', { name: /Converse/ })).toHaveClass('featured-project-card', 'is-center')
+    expect(within(work as HTMLElement).getByRole('link', { name: /SAB Builders/ })).toHaveClass('featured-project-card', 'is-right')
+    expect(within(work as HTMLElement).getByRole('link', { name: /RetailFlow/ })).toHaveClass('featured-project-card', 'is-left')
     for (const project of projects) {
       const card = within(work as HTMLElement).getByRole('link', { name: new RegExp(project.name) })
       expect(card).toHaveAttribute('href', `/projects/${project.slug}`)
     }
-    expect(within(work as HTMLElement).getAllByRole('link', { name: /view project/i })).toHaveLength(4)
+    expect(within(work as HTMLElement).getByRole('img', { name: /Converse project artwork/ })).toHaveAttribute(
+      'src',
+      '/images/projects/converse-project-art.jpg',
+    )
+    expect(within(work as HTMLElement).queryByText('View project')).not.toBeInTheDocument()
+    expect(work?.querySelector('.project-card-link-label')).toBeNull()
   })
 
   it('renders all projects on the projects page with full-card navigation', () => {
@@ -60,7 +75,7 @@ describe('portfolio application', () => {
     for (const project of projects) {
       expect(screen.getByRole('link', { name: new RegExp(project.name), })).toHaveAttribute('href', `/projects/${project.slug}`)
     }
-    expect(screen.queryByRole('heading', { name: 'Planwise' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Project Management System' })).not.toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Vincent.' })).toHaveAttribute('href', '/')
   })
 
@@ -80,11 +95,7 @@ describe('portfolio application', () => {
       }
       expect(screen.getAllByRole('link', { name: /all projects/i }).every((link) => link.getAttribute('href') === '/projects')).toBe(true)
 
-      if (project.visual === 'management') {
-        expect(screen.getByText('Project screenshots have not been added yet.')).toBeInTheDocument()
-      } else {
-        expect(document.querySelectorAll('.project-detail-main figure img').length).toBeGreaterThan(0)
-      }
+      expect(document.querySelectorAll('.project-detail-main figure img').length).toBeGreaterThan(0)
       expect(screen.queryByRole('link', { name: /live demo|source code/i })).not.toBeInTheDocument()
       unmount()
     }

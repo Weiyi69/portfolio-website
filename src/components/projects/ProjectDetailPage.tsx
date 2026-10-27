@@ -1,11 +1,9 @@
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
-import { ProjectArtwork } from './ProjectCard'
 import { ConverseGallery } from './ConverseGallery'
 import { RetailFlowGallery } from './RetailFlowGallery'
 import { SabBuildersGallery } from './SabBuildersGallery'
 import { projects } from '../../data/projects'
 import type { Project } from '../../types'
-import { SiteFooter } from '../layout/SiteFooter'
 import { SiteHeader } from '../layout/SiteHeader'
 
 interface ProjectDetailPageProps {
@@ -17,12 +15,7 @@ function ProjectGallery({ project }: ProjectDetailPageProps) {
   if (project.visual === 'construction') return <SabBuildersGallery />
   if (project.visual === 'retail') return <RetailFlowGallery />
 
-  return (
-    <div className="project-gallery-unavailable">
-      <span>VISUALS</span>
-      <p>Project screenshots have not been added yet.</p>
-    </div>
-  )
+  return null
 }
 
 function ProjectNavigation({ project }: ProjectDetailPageProps) {
@@ -62,9 +55,6 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
 
         <div className="project-detail-layout">
           <div className="project-detail-main">
-            {project.visual === 'management' ? (
-              <ProjectArtwork project={project} className="detail-project-art" showIndex={false} />
-            ) : null}
             <section className="detail-copy-block" aria-labelledby="project-overview">
               <p className="section-kicker">OVERVIEW</p>
               <h2 id="project-overview">The project</h2>
@@ -122,7 +112,6 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         </div>
         <ProjectNavigation project={project} />
       </main>
-      <SiteFooter />
     </>
   )
 }

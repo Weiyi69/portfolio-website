@@ -34,7 +34,7 @@ export function SiteHeader({ currentPage }: SiteHeaderProps) {
           aria-label="Main navigation"
         >
           <a href={`${homePrefix}#about`} onClick={closeMenu}>About</a>
-          <a href={`${homePrefix}#skills`} onClick={closeMenu}>Skills</a>
+          <a href={`${homePrefix}#skills`} onClick={closeMenu}>Stack</a>
           <a href={currentPage === 'home' ? '#work' : '/projects'} onClick={closeMenu}>Projects</a>
           <a className="navigation-contact" href={`${homePrefix}#contact`} onClick={closeMenu}>Contact</a>
         </nav>

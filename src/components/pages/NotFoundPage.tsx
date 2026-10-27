@@ -1,4 +1,3 @@
-import { SiteFooter } from '../layout/SiteFooter'
 import { SiteHeader } from '../layout/SiteHeader'
 
 export function NotFoundPage() {
@@ -11,7 +10,6 @@ export function NotFoundPage() {
         <p>The address may have changed, or the page may not exist.</p>
         <a className="button button-dark" href="/">Return to portfolio</a>
       </main>
-      <SiteFooter />
     </>
   )
 }
