@@ -127,4 +127,4 @@ No deployment has been performed. When ready:
 5. Add a custom domain if desired, set `siteUrl` in `src/data/portfolio.ts` to the final HTTPS origin, and redeploy so project canonical URLs can be generated.
 6. Confirm the social preview image, contact details, and project links before sharing the site.
 
-The portfolio is static and does not require serverless functions, a database, or custom Vercel routing configuration unless route-refresh testing on the deployed site shows otherwise.
+The `vercel.json` rewrite sends application routes such as `/projects` and `/projects/converse` to the Vite app entry point, so clicking a project or refreshing its detail page does not return Vercel's 404 page. Vercel serves existing static assets normally.
