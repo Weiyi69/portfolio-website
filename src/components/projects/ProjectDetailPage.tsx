@@ -102,12 +102,6 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
                 <p>No public demo or source link has been provided.</p>
               )}
             </div>
-            {project.year && (
-              <div className="detail-aside-block">
-                <h2>Year</h2>
-                <p>{project.year}</p>
-              </div>
-            )}
           </aside>
         </div>
         <ProjectNavigation project={project} />

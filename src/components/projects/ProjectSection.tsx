@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { projects } from '../../data/projects'
-import { ProjectCardLink } from './ProjectCard'
+import { ProjectCard } from './ProjectCard'
 import type { Project } from '../../types'
 
 function cardVariant(visual: Project['visual']): 'website-promo' | 'messaging-promo' | 'retail-promo' | undefined {
@@ -10,6 +11,9 @@ function cardVariant(visual: Project['visual']): 'website-promo' | 'messaging-pr
 }
 
 export function ProjectSection() {
+  const [selectedProjectSlug, setSelectedProjectSlug] = useState(projects[0]?.slug)
+  const selectedIndex = projects.findIndex((project) => project.slug === selectedProjectSlug)
+
   return (
     <section className="section work-section" id="work" aria-labelledby="projects-title">
       <div className="page-width">
@@ -21,15 +25,29 @@ export function ProjectSection() {
           <a className="text-link" href="/projects">All projects <ArrowUpRight size={16} aria-hidden="true" /></a>
         </div>
         <div className="featured-project-grid" aria-label="Featured project cards">
-          {projects.map((project, index) => (
-            <ProjectCardLink
-              key={project.slug}
-              project={project}
-              variant={cardVariant(project.visual)}
-              showArtworkIndex
-              className={`featured-project-card is-${index === 0 ? 'center' : index === 1 ? 'right' : 'left'}`}
-            />
-          ))}
+          {projects.map((project, index) => {
+            const position = index === selectedIndex
+              ? 'center'
+              : (index - selectedIndex + projects.length) % projects.length === 1
+                ? 'right'
+                : 'left'
+
+            return (
+              <button
+                key={project.slug}
+                type="button"
+                className={`project-card-link featured-project-card is-${position}`}
+                aria-pressed={index === selectedIndex}
+                onClick={() => setSelectedProjectSlug(project.slug)}
+              >
+                <ProjectCard
+                  project={project}
+                  variant={cardVariant(project.visual)}
+                  showArtworkIndex
+                />
+              </button>
+            )
+          })}
         </div>
       </div>
     </section>

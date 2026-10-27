@@ -47,24 +47,35 @@ describe('portfolio application', () => {
     expect(within(skills as HTMLElement).queryByText(/no professional cloud deployment experience is implied/i)).not.toBeInTheDocument()
   })
 
-  it('makes all three home project cards link to their detail pages', () => {
+  it('selects and centers each home project card without navigating away', () => {
     render(<App />)
 
     const work = document.getElementById('work')
     expect(work).not.toBeNull()
-    expect(within(work as HTMLElement).getByRole('link', { name: /Converse/ })).toHaveClass('featured-project-card', 'is-center')
-    expect(within(work as HTMLElement).getByRole('link', { name: /SAB Builders/ })).toHaveClass('featured-project-card', 'is-right')
-    expect(within(work as HTMLElement).getByRole('link', { name: /RetailFlow/ })).toHaveClass('featured-project-card', 'is-left')
+    const section = within(work as HTMLElement)
+    const converse = section.getByRole('button', { name: /Converse/ })
+    const sabBuilders = section.getByRole('button', { name: /SAB Builders/ })
+    const retailFlow = section.getByRole('button', { name: /RetailFlow/ })
+    expect(converse).toHaveClass('featured-project-card', 'is-center')
+    expect(sabBuilders).toHaveClass('featured-project-card', 'is-right')
+    expect(retailFlow).toHaveClass('featured-project-card', 'is-left')
+    expect(converse).toHaveAttribute('aria-pressed', 'true')
+
     for (const project of projects) {
-      const card = within(work as HTMLElement).getByRole('link', { name: new RegExp(project.name) })
-      expect(card).toHaveAttribute('href', `/projects/${project.slug}`)
+      const card = section.getByRole('button', { name: new RegExp(project.name) })
+      fireEvent.click(card)
+      expect(card).toHaveClass('is-center')
+      expect(card).toHaveAttribute('aria-pressed', 'true')
+      expect(window.location.pathname).toBe('/')
     }
+
     expect(within(work as HTMLElement).getByRole('img', { name: /Converse project artwork/ })).toHaveAttribute(
       'src',
       '/images/projects/converse-project-art.jpg',
     )
     expect(within(work as HTMLElement).queryByText('View project')).not.toBeInTheDocument()
     expect(work?.querySelector('.project-card-link-label')).toBeNull()
+    expect(work?.querySelector('a[href^="/projects/"]')).toBeNull()
   })
 
   it('renders all projects on the projects page with full-card navigation', () => {
@@ -89,6 +100,7 @@ describe('portfolio application', () => {
       expect(screen.getByRole('heading', { name: 'My contribution' })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: 'Tools for the job' })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: 'Project highlights' })).toBeInTheDocument()
+      expect(screen.queryByRole('heading', { name: 'Year' })).not.toBeInTheDocument()
       expect(screen.getByText(project.technicalApproach)).toBeInTheDocument()
       for (const technology of project.stack) {
         expect(screen.getByText(technology, { exact: true })).toBeInTheDocument()

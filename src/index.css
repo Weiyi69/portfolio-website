@@ -971,7 +971,27 @@ a:focus-visible, button:focus-visible {
 .project-card-link { display: flex; min-width: 0; height: 100%; flex-direction: column; color: inherit; text-decoration: none; }
 .project-card-link > .project-card,
 .project-card-link > [data-pointer-tilt-area] { width: 100%; }
+.projects-page-grid .project-card-link {
+  padding: 14px;
+  border: 1px solid #e4e2dc;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(32 33 31 / 3%);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.projects-page-grid .project-card-link:hover {
+  transform: translateY(-2px);
+  border-color: #cfcdc5;
+  box-shadow: 0 10px 24px rgb(32 33 31 / 8%);
+}
+.projects-page-grid .project-card-link:focus-visible {
+  outline-offset: 4px;
+}
 .project-card-link .project-art { height: clamp(240px, 28vw, 340px); }
+.projects-page-grid .project-card-link .project-art {
+  border: 1px solid #e8e6e0;
+  border-radius: 7px;
+}
 .project-card-link .sab-website-card,
 .project-card-link .converse-promo-card,
 .project-card-link .retail-promo-card {
@@ -1023,6 +1043,7 @@ a:focus-visible, button:focus-visible {
 .project-card-link:focus-visible article { outline: none; }
 .project-card { transition: transform .2s ease, box-shadow .2s ease; }
 .project-card-link:hover .project-card { box-shadow: 0 12px 30px rgb(34 35 32 / 10%); }
+.projects-page-grid .project-card-link:hover .project-card { box-shadow: none; }
 .project-art { border-radius: 2px; filter: none; }
 .project-art-image {
   width: 100%;
@@ -1170,6 +1191,13 @@ a:focus-visible, button:focus-visible {
   left: 50%;
   width: clamp(280px, 40%, 400px);
   height: 500px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   transform-origin: center 70%;
   transition: transform .45s cubic-bezier(.2, .75, .25, 1), opacity .35s ease, filter .35s ease;
 }
