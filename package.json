@@ -3,12 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "format": "oxfmt --write .",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc -b --pretty"
   },
   "dependencies": {
@@ -27,6 +32,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "jsdom": "^29.1.1",
     "oxlint": "^1.88.0",
+    "oxfmt": "^0.75.0",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
     "vite": "^8.3.4",

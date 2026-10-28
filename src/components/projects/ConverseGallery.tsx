@@ -9,7 +9,7 @@ export function ConverseGallery() {
             <span>{String(index + 1).padStart(2, '0')}</span>
             {title}
           </figcaption>
-          <img src={src} alt={`${title} screenshot`} loading="lazy" decoding="async" />
+          <img src={src} alt={`${title} screenshot`} width={1367} height={768} loading="lazy" decoding="async" />
         </figure>
       ))}
     </div>

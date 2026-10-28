@@ -7,13 +7,16 @@ export interface Project {
   category: string
   summary: string
   year?: string
-  stack: string[]
+  stack?: string[]
   accent: string
   visual: ProjectVisual
   overview: string
   contribution: string
   technicalApproach: string
   features: string[]
+  problem?: string
+  keyDecisionsAndChallenges?: string
+  outcome?: string
   demoUrl?: string
   sourceUrl?: string
 }

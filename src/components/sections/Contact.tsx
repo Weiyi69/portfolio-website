@@ -19,9 +19,7 @@ export function Contact() {
               {portfolio.email}
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-          ) : (
-            <p className="contact-placeholder"><Mail size={18} aria-hidden="true" /> Add a professional email before publishing.</p>
-          )}
+          ) : null}
           <a href={portfolio.githubUrl} target="_blank" rel="noreferrer">
             <span className="social-monogram" aria-hidden="true">GH</span>
             GitHub

@@ -6,12 +6,18 @@ export function ParticlePortrait() {
   return (
     <div className="portrait-art">
       {imageUnavailable ? (
-        <div className="portrait-fallback" role="img" aria-label="Portrait image unavailable">VS</div>
+        <>
+          <div className="portrait-fallback" aria-hidden="true">VS</div>
+          <output className="sr-only">Portrait image unavailable</output>
+        </>
       ) : (
         <img
           className="portrait-photo"
-          src="/images/profile.png"
+          src="/images/profile.jpg"
           alt="Portrait of Vincent Sebastian"
+          width={1254}
+          height={1254}
+          decoding="async"
           onError={() => setImageUnavailable(true)}
         />
       )}

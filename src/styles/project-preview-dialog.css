@@ -84,8 +84,8 @@
 
 .retailflow-screen figcaption span {
   color: #92928d;
-  font-family: "Press Start 2P", "SFMono-Regular", monospace;
-  font-size: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -119,8 +119,8 @@
 
 .converse-screen figcaption span {
   color: #92928d;
-  font-family: "Press Start 2P", "SFMono-Regular", monospace;
-  font-size: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -154,8 +154,8 @@
 
 .sab-builders-screen figcaption span {
   color: #92928d;
-  font-family: "Press Start 2P", "SFMono-Regular", monospace;
-  font-size: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -207,4 +207,3 @@
 .project-preview-info .tag-list li {
   font-size: 10px;
 }
-

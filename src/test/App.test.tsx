@@ -1,12 +1,18 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import App from '../App'
+import { ProjectDetailPage } from '../components/projects/ProjectDetailPage'
 import { portfolio } from '../data/portfolio'
 import { projects } from '../data/projects'
 import { stackCategories } from '../data/techStack'
 
+const originalEmail = portfolio.email
+const originalResumeUrl = portfolio.resumeUrl
+
 afterEach(() => {
   window.history.pushState({}, '', '/')
+  portfolio.email = originalEmail
+  portfolio.resumeUrl = originalResumeUrl
 })
 
 describe('portfolio application', () => {
@@ -100,17 +106,84 @@ describe('portfolio application', () => {
       expect(screen.getByRole('heading', { name: 'My contribution' })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: 'Tools for the job' })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: 'Project highlights' })).toBeInTheDocument()
+      expect(screen.queryByRole('heading', { name: 'My role' })).not.toBeInTheDocument()
+      if (project.slug !== 'sab-builders') {
+        const { problem, keyDecisionsAndChallenges, outcome } = project
+        if (!problem || !keyDecisionsAndChallenges || !outcome) {
+          throw new Error(`Expected ${project.name} project detail copy to be defined.`)
+        }
+        expect(screen.getByRole('heading', { name: 'The problem' })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: 'Key decisions & challenges' })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: 'Outcome' })).toBeInTheDocument()
+        expect(screen.getByText(problem)).toBeInTheDocument()
+        expect(screen.getByText(project.contribution)).toBeInTheDocument()
+        expect(screen.getByText(keyDecisionsAndChallenges)).toBeInTheDocument()
+        expect(screen.getByText(outcome)).toBeInTheDocument()
+      } else {
+        const { problem, keyDecisionsAndChallenges, outcome } = project
+        if (!problem || !keyDecisionsAndChallenges || !outcome) {
+          throw new Error('Expected SAB Builders project detail copy to be defined.')
+        }
+        expect(screen.getByRole('heading', { name: 'The problem' })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: 'Key decisions & challenges' })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: 'Outcome' })).toBeInTheDocument()
+        expect(screen.getByText(problem)).toBeInTheDocument()
+        expect(screen.getByText(project.contribution)).toBeInTheDocument()
+        expect(screen.getByText(keyDecisionsAndChallenges)).toBeInTheDocument()
+        expect(screen.getByText(outcome)).toBeInTheDocument()
+      }
+      expect(screen.queryByText('TODO')).not.toBeInTheDocument()
       expect(screen.queryByRole('heading', { name: 'Year' })).not.toBeInTheDocument()
       expect(screen.getByText(project.technicalApproach)).toBeInTheDocument()
-      for (const technology of project.stack) {
+      for (const technology of project.stack ?? []) {
         expect(screen.getByText(technology, { exact: true })).toBeInTheDocument()
       }
       expect(screen.getAllByRole('link', { name: /all projects/i }).every((link) => link.getAttribute('href') === '/projects')).toBe(true)
 
       expect(document.querySelectorAll('.project-detail-main figure img').length).toBeGreaterThan(0)
-      expect(screen.queryByRole('link', { name: /live demo|source code/i })).not.toBeInTheDocument()
+      if (project.slug === 'sab-builders') {
+        expect(screen.getByRole('link', { name: /live demo/i })).toHaveAttribute(
+          'href',
+          'https://sab-builders.vercel.app',
+        )
+      } else {
+        expect(screen.queryByRole('link', { name: /live demo|source code/i })).not.toBeInTheDocument()
+      }
       unmount()
     }
+  })
+
+  it('omits optional project details and technology when they are empty', () => {
+    const project = projects[0]
+    if (!project) throw new Error('Expected at least one project for optional-detail coverage.')
+    render(
+      <ProjectDetailPage
+        project={{
+          ...project,
+          problem: undefined,
+          keyDecisionsAndChallenges: undefined,
+          outcome: undefined,
+          stack: [],
+        }}
+      />,
+    )
+
+    expect(screen.queryByRole('heading', { name: 'The problem' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'My role' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Key decisions & challenges' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Outcome' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'Technology' })).not.toBeInTheDocument()
+  })
+
+  it('hides email and résumé links when those details are blank', () => {
+    portfolio.email = ''
+    portfolio.resumeUrl = ''
+    render(<App />)
+
+    expect(screen.queryByRole('link', { name: /vjsebastiaaan@gmail\.com/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /resume/i })).not.toBeInTheDocument()
+    expect(screen.queryByText(/add a professional email/i)).not.toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: /GitHub/ })).not.toHaveLength(0)
   })
 
   it('shows a useful not-found page for unknown project and route paths', () => {
@@ -137,6 +210,6 @@ describe('portfolio application', () => {
   it('uses the portrait fallback when the local portrait image cannot load', () => {
     render(<App />)
     fireEvent.error(screen.getByRole('img', { name: 'Portrait of Vincent Sebastian' }))
-    expect(screen.getByRole('img', { name: 'Portrait image unavailable' })).toBeInTheDocument()
+    expect(screen.getByText('Portrait image unavailable')).toBeInTheDocument()
   })
 })

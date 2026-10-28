@@ -8,6 +8,7 @@ import { Contact } from './components/sections/Contact'
 import { SiteHeader } from './components/layout/SiteHeader'
 import { projects } from './data/projects'
 import { portfolio } from './data/portfolio'
+import { getAbsoluteSiteUrl, getPageSeo, getSiteOrigin } from './seo'
 
 function App() {
   const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
@@ -18,16 +19,18 @@ function App() {
 
   useEffect(() => {
     const previousTitle = document.title
-    const siteOrigin = portfolio.siteUrl ? new URL(`${portfolio.siteUrl.replace(/\/+$/, '')}/`) : undefined
-    const socialImage = siteOrigin ? new URL('/images/profile.png', siteOrigin).toString() : '/images/profile.png'
+    const siteOrigin = getSiteOrigin(portfolio.siteUrl)
+    const seo = getPageSeo(portfolio, pathname, currentProject)
     const metaValues = [
-      ['meta[name="description"]', currentProject?.summary ?? 'A full-stack developer building modern, user-friendly web applications and practical digital products.'],
-      ['meta[property="og:title"]', currentProject ? `${currentProject.name} — ${currentProject.category} | ${portfolio.name}` : `${portfolio.name} — ${portfolio.role}`],
-      ['meta[property="og:description"]', currentProject?.summary ?? 'A full-stack developer building modern, user-friendly web applications and practical digital products.'],
-      ['meta[property="og:image"]', socialImage],
-      ['meta[name="twitter:title"]', currentProject ? `${currentProject.name} — ${currentProject.category} | ${portfolio.name}` : `${portfolio.name} — ${portfolio.role}`],
-      ['meta[name="twitter:description"]', currentProject?.summary ?? 'A full-stack developer building modern, user-friendly web applications and practical digital products.'],
-      ['meta[name="twitter:image"]', socialImage],
+      ['meta[name="description"]', seo.description],
+      ['meta[property="og:title"]', seo.title],
+      ['meta[property="og:description"]', seo.description],
+      ['meta[property="og:image"]', seo.image],
+      ['meta[property="og:image:alt"]', seo.imageAlt],
+      ['meta[name="twitter:title"]', seo.title],
+      ['meta[name="twitter:description"]', seo.description],
+      ['meta[name="twitter:image"]', seo.image],
+      ['meta[name="twitter:image:alt"]', seo.imageAlt],
     ] as const
     const previousMeta = metaValues.map(([selector, content]) => {
       const element = document.querySelector<HTMLMetaElement>(selector)
@@ -49,7 +52,7 @@ function App() {
         document.head.append(link)
         createdCanonical = link
       }
-      link.href = new URL(pathname, siteOrigin).toString()
+      link.href = getAbsoluteSiteUrl(portfolio.siteUrl, pathname)
       const meta = ogUrl ?? document.createElement('meta')
       if (!ogUrl) {
         meta.setAttribute('property', 'og:url')
@@ -59,13 +62,9 @@ function App() {
       meta.content = link.href
     }
 
-    document.title = currentProject
-      ? `${currentProject.name} — ${currentProject.category} | ${portfolio.name}`
-      : pathname === '/projects'
-        ? `Projects | ${portfolio.name}`
-        : pathname === '/'
-          ? `${portfolio.name} — ${portfolio.role}`
-          : `Page not found | ${portfolio.name}`
+    document.title = pathname !== '/' && pathname !== '/projects' && !currentProject
+      ? `Page not found | ${portfolio.name}`
+      : seo.title
 
     return () => {
       document.title = previousTitle

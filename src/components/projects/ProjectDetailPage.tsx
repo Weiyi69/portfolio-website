@@ -22,6 +22,7 @@ function ProjectNavigation({ project }: ProjectDetailPageProps) {
   const index = projects.findIndex((item) => item.slug === project.slug)
   const previous = projects[(index - 1 + projects.length) % projects.length]
   const next = projects[(index + 1) % projects.length]
+  if (!previous || !next) return null
 
   return (
     <nav className="project-pagination" aria-label="Project navigation">
@@ -42,7 +43,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   return (
     <>
       <SiteHeader currentPage="project-detail" />
-      <main className="project-detail page-width">
+      <main className="project-detail page-width" id="main-content">
         <a className="text-back-link" href="/projects">
           <ArrowLeft size={16} aria-hidden="true" />
           All projects
@@ -70,13 +71,36 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
               <h2 id="project-approach">Tools for the job</h2>
               <p>{project.technicalApproach}</p>
             </section>
-            <section className="detail-copy-block" aria-labelledby="project-features">
-              <p className="section-kicker">CAPABILITIES</p>
-              <h2 id="project-features">Project highlights</h2>
-              <ul className="feature-list">
-                {project.features.map((feature) => <li key={feature}>{feature}</li>)}
-              </ul>
-            </section>
+            {project.problem && (
+              <section className="detail-copy-block" aria-labelledby="project-problem">
+                <p className="section-kicker">PROBLEM</p>
+                <h2 id="project-problem">The problem</h2>
+                <p>{project.problem}</p>
+              </section>
+            )}
+            {project.keyDecisionsAndChallenges && (
+              <section className="detail-copy-block" aria-labelledby="project-decisions">
+                <p className="section-kicker">DECISIONS &amp; CHALLENGES</p>
+                <h2 id="project-decisions">Key decisions &amp; challenges</h2>
+                <p>{project.keyDecisionsAndChallenges}</p>
+              </section>
+            )}
+            {project.outcome && (
+              <section className="detail-copy-block" aria-labelledby="project-outcome">
+                <p className="section-kicker">OUTCOME</p>
+                <h2 id="project-outcome">Outcome</h2>
+                <p>{project.outcome}</p>
+              </section>
+            )}
+            {project.features.length > 0 && (
+              <section className="detail-copy-block" aria-labelledby="project-features">
+                <p className="section-kicker">CAPABILITIES</p>
+                <h2 id="project-features">Project highlights</h2>
+                <ul className="feature-list">
+                  {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+                </ul>
+              </section>
+            )}
             <section className="detail-copy-block" aria-labelledby="project-screenshots">
               <p className="section-kicker">SELECTED SCREENS</p>
               <h2 id="project-screenshots">A closer look</h2>
@@ -85,12 +109,14 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
           </div>
 
           <aside className="project-detail-aside">
-            <div className="detail-aside-block">
-              <h2>Technology</h2>
-              <ul className="tag-list" aria-label={`${project.name} technologies`}>
-                {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
-              </ul>
-            </div>
+            {project.stack && project.stack.length > 0 && (
+              <div className="detail-aside-block">
+                <h2>Technology</h2>
+                <ul className="tag-list" aria-label={`${project.name} technologies`}>
+                  {project.stack.map((technology) => <li key={technology}>{technology}</li>)}
+                </ul>
+              </div>
+            )}
             <div className="detail-aside-block">
               <h2>Project links</h2>
               {project.demoUrl || project.sourceUrl ? (

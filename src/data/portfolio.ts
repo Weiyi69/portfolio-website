@@ -1,4 +1,4 @@
-import type { PortfolioProfile } from '../types'
+import type { PortfolioProfile } from '../types/index.js'
 
 export const portfolio: PortfolioProfile = {
   name: 'Vincent Sebastian',
@@ -12,5 +12,5 @@ export const portfolio: PortfolioProfile = {
   linkedinUrl: 'https://www.linkedin.com/in/vincent-sebastian-0a63813aa/',
   email: 'vjsebastiaaan@gmail.com',
   resumeUrl: '',
-  siteUrl: '',
+  siteUrl: 'https://vincentsebastian.vercel.app',
 }
