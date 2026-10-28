@@ -1,0 +1,235 @@
+.projects-page {
+  min-height: 70vh;
+  padding-block: clamp(60px, 9vw, 110px) 100px;
+}
+
+.projects-page-heading {
+  max-width: 660px;
+  margin-bottom: 52px;
+}
+
+.projects-page-heading h1,
+.project-detail-heading h1,
+.not-found h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(52px, 8vw, 92px);
+  font-weight: 400;
+  letter-spacing: -.065em;
+  line-height: .98;
+}
+
+.projects-page-heading>p:last-child {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.text-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 42px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.text-back-link:hover {
+  color: var(--ink);
+}
+
+.project-detail {
+  padding-block: 40px 90px;
+}
+
+.project-detail-heading {
+  max-width: 780px;
+  margin-bottom: 52px;
+}
+
+.project-detail-heading .section-kicker {
+  margin-bottom: 16px;
+}
+
+.project-detail-heading>p:last-child {
+  max-width: 670px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.project-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: clamp(40px, 7vw, 92px);
+  align-items: start;
+}
+
+.project-detail-main {
+  min-width: 0;
+}
+
+.detail-project-art {
+  height: clamp(260px, 42vw, 480px);
+  margin-bottom: 62px;
+}
+
+.detail-copy-block {
+  margin-bottom: 58px;
+}
+
+.detail-copy-block .section-kicker {
+  margin-bottom: 12px;
+}
+
+.detail-copy-block h2,
+.detail-aside-block h2 {
+  margin: 0 0 15px;
+  font-family: var(--serif);
+  font-size: clamp(29px, 4vw, 40px);
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+.detail-copy-block>p:last-child {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.feature-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.feature-list li {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  color: #4f514b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.project-detail-aside {
+  position: sticky;
+  top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.detail-aside-block {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.detail-aside-block h2 {
+  margin-bottom: 15px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.detail-aside-block>p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.detail-aside-block .tag-list {
+  gap: 6px;
+}
+
+.detail-aside-block .tag-list li {
+  font-size: 10px;
+}
+
+.project-external-links {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-external-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #4f514b;
+  font-size: 12px;
+}
+
+.project-external-links a:hover {
+  color: var(--accent);
+}
+
+.project-gallery-unavailable {
+  display: grid;
+  min-height: 210px;
+  place-content: center;
+  gap: 12px;
+  padding: 30px;
+  border: 1px dashed #c9c8c0;
+  background: #f5f4ef;
+  text-align: center;
+}
+
+.project-gallery-unavailable span {
+  color: #777970;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.project-gallery-unavailable p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.project-pagination a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.project-pagination a:hover {
+  color: var(--ink);
+}
+
+.not-found {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-block: 80px;
+}
+
+.not-found>p:not(.section-kicker) {
+  max-width: 450px;
+  margin: 20px 0 28px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+

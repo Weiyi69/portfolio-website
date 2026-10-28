@@ -1,0 +1,415 @@
+.project-card {
+  min-width: 0;
+}
+
+.sab-website-card,
+.converse-promo-card,
+.retail-promo-card {
+  height: 360px;
+}
+
+.sab-website-card {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid #e9e9e7;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(20 20 20 / 7%);
+}
+
+.sab-website-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #171717;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .07em;
+}
+
+.sab-website-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sab-website-brand>img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.sab-website-brand h3 {
+  margin: 0;
+  color: #262626;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.sab-website-brand div>span {
+  color: #858585;
+  font-size: 7px;
+}
+
+.sab-website-card>p {
+  margin: 5px 0 8px;
+  color: #696969;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.sab-website-preview {
+  aspect-ratio: 1367 / 768;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 1px solid #e8e8e6;
+  border-radius: 5px;
+  background: #f5f5f4;
+}
+
+.sab-website-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sab-website-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto 0 0;
+  padding: 8px 0 0;
+  list-style: none;
+}
+
+.sab-website-features li {
+  padding: 5px 7px;
+  border: 1px solid #e3e3e0;
+  border-radius: 5px;
+  color: #555;
+  font-size: 8px;
+}
+
+.converse-promo-card {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  padding: 18px;
+  border: 1px solid #e9e9e7;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(20 20 20 / 7%);
+}
+
+.converse-promo-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #171717;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+
+.converse-promo-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.converse-promo-brand>img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.converse-promo-brand h3 {
+  margin: 0;
+  color: #202a39;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.converse-promo-brand div>span {
+  color: #8590a2;
+  font-size: 8px;
+}
+
+.converse-promo-card>p {
+  margin: 7px 0 10px;
+  color: #687488;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.converse-app-preview {
+  display: flex;
+  height: 136px;
+  overflow: hidden;
+  border: 1px solid #e9edf4;
+  border-radius: 8px;
+  background: #fbfcfe;
+  color: #253044;
+  font-family: Arial, sans-serif;
+}
+
+.converse-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.converse-promo-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto 0 0;
+  padding: 10px 0 0;
+  list-style: none;
+}
+
+.converse-promo-features li {
+  padding: 5px 7px;
+  border: 1px solid #e4e9f1;
+  border-radius: 5px;
+  color: #617188;
+  font-size: 8px;
+}
+
+.retail-promo-card {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid #e9e9e7;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(20 20 20 / 7%);
+}
+
+.retail-promo-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #171717;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+
+.retail-promo-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.retail-promo-brand>img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.retail-promo-brand h3 {
+  margin: 0;
+  color: #142f4c;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+
+.retail-promo-brand div>span {
+  color: #77828d;
+  font-size: 7px;
+}
+
+.retail-promo-card>p {
+  margin: 5px 0 8px;
+  color: #69727b;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.retail-store-preview {
+  overflow: hidden;
+  border: 1px solid #ececea;
+  border-radius: 5px;
+  background: #fff;
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+.retail-store-nav {
+  display: flex;
+  height: 19px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 0 6px;
+  border-bottom: 1px solid #f0f0ef;
+}
+
+.retail-store-nav b {
+  color: #0b4263;
+  font-size: 7px;
+  letter-spacing: -.04em;
+}
+
+.retail-store-nav>span {
+  color: #737373;
+  font-size: 3px;
+  letter-spacing: .12em;
+}
+
+.retail-store-nav i {
+  color: #333;
+  font-size: 6px;
+  font-style: normal;
+}
+
+.retail-store-hero {
+  display: flex;
+  height: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #f3f3f2;
+}
+
+.retail-store-hero small {
+  color: #858585;
+  font-size: 4px;
+  letter-spacing: .16em;
+}
+
+.retail-store-hero b {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.retail-store-hero>span {
+  margin-top: 2px;
+  color: #747474;
+  font-size: 4px;
+}
+
+.retail-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 6px;
+}
+
+.retail-product {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  text-align: center;
+}
+
+.retail-product>span {
+  position: relative;
+  display: block;
+  height: 46px;
+  margin-bottom: 3px;
+  overflow: hidden;
+  background: #f4f4f3;
+}
+
+.retail-product>b {
+  overflow: hidden;
+  font-size: 4px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.retail-product>small {
+  margin-top: 2px;
+  color: #777;
+  font-size: 3px;
+}
+
+.retail-pants::before,
+.retail-shorts::before,
+.retail-jeans::before,
+.retail-hoodie::before {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 24%;
+  height: 65%;
+  background: #252525;
+  clip-path: polygon(12% 0, 88% 0, 100% 100%, 57% 100%, 50% 40%, 43% 100%, 0 100%);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.retail-shorts::before {
+  top: 33%;
+  width: 40%;
+  height: 43%;
+  background: #536c7d;
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 53% 88%, 48% 100%, 0 100%);
+}
+
+.retail-jeans::before {
+  width: 31%;
+  background: #607987;
+}
+
+.retail-hoodie::before {
+  top: 15%;
+  width: 43%;
+  height: 70%;
+  background: #9b8c8c;
+  clip-path: polygon(24% 0, 76% 0, 100% 24%, 83% 40%, 76% 28%, 76% 100%, 24% 100%, 24% 28%, 17% 40%, 0 24%);
+}
+
+.retail-product.is-sold-out>small {
+  color: #a33131;
+  font-weight: 700;
+}
+
+.retail-promo-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto 0 0;
+  padding: 8px 0 0;
+  list-style: none;
+}
+
+.retail-promo-features li {
+  padding: 5px 7px;
+  border: 1px solid #e6e8e8;
+  border-radius: 5px;
+  color: #59676c;
+  font-size: 7px;
+}
+

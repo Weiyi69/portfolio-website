@@ -1,0 +1,384 @@
+.about-section {
+  border-block: 1px solid var(--line);
+  background: #f5f4ef;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 9vw, 130px);
+  align-items: start;
+}
+
+.about-grid h2,
+.section-heading h2,
+.contact-inner h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: 1.06;
+}
+
+.about-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.about-copy .text-link {
+  margin-top: 26px;
+  color: var(--ink);
+}
+
+.work-section {
+  padding-block: clamp(72px, 10vw, 120px);
+  overflow: visible;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 42px;
+}
+
+.section-heading .section-kicker {
+  margin-bottom: 13px;
+}
+
+.section-heading>p {
+  max-width: 360px;
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.work-heading .text-link {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.featured-project-grid,
+.projects-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px 28px;
+  align-items: stretch;
+}
+
+.project-card-link {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card-link>.project-card,
+.project-card-link>[data-pointer-tilt-area] {
+  width: 100%;
+}
+
+.projects-page-grid .project-card-link {
+  padding: 14px;
+  border: 1px solid #e4e2dc;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(32 33 31 / 3%);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.projects-page-grid .project-card-link:hover {
+  transform: translateY(-2px);
+  border-color: #cfcdc5;
+  box-shadow: 0 10px 24px rgb(32 33 31 / 8%);
+}
+
+.projects-page-grid .project-card-link:focus-visible {
+  outline-offset: 4px;
+}
+
+.project-card-link .project-art {
+  height: clamp(240px, 28vw, 340px);
+}
+
+.projects-page-grid .project-card-link .project-art {
+  border: 1px solid #e8e6e0;
+  border-radius: 7px;
+}
+
+.project-card-link .sab-website-card,
+.project-card-link .converse-promo-card,
+.project-card-link .retail-promo-card {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  flex: 0 0 auto;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid #e6e5df;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.project-card-link .sab-website-preview,
+.project-card-link .converse-app-preview,
+.project-card-link .retail-store-preview {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #ecebe6;
+  border-radius: 3px;
+  background: #f7f6f2;
+}
+
+.project-card-link .sab-website-preview img,
+.project-card-link .converse-app-preview img,
+.project-card-link .retail-store-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-card-link .retail-store-preview img {
+  max-height: 100%;
+}
+
+.project-card-link .converse-promo-features,
+.project-card-link .sab-website-features,
+.project-card-link .retail-promo-features {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.project-card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.project-card-link:focus-visible article {
+  outline: none;
+}
+
+.project-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card-link:hover .project-card {
+  box-shadow: 0 12px 30px rgb(34 35 32 / 10%);
+}
+
+.projects-page-grid .project-card-link:hover .project-card {
+  box-shadow: none;
+}
+
+.project-art {
+  border-radius: 2px;
+  filter: none;
+}
+
+.project-art-image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.project-art:has(> .project-art-image) {
+  background: #f0efea;
+}
+
+.project-art-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 62px);
+  background: #e9e9e4;
+  color: var(--ink);
+}
+
+.project-art-placeholder span {
+  color: #767971;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.project-art-placeholder strong {
+  margin-top: 24px;
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  line-height: .98;
+}
+
+.art-index {
+  color: #787a73;
+}
+
+.project-meta {
+  color: #787a73;
+  font-size: 11px;
+}
+
+.project-title-row h3 {
+  font-family: var(--serif);
+  font-size: 30px;
+}
+
+.project-info>p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tag-list li {
+  border-color: #e0dfd9;
+  border-radius: 2px;
+  color: #55574f;
+  font-size: 10px;
+}
+
+.project-card-link:hover .sab-website-card,
+.project-card-link:hover .converse-promo-card,
+.project-card-link:hover .retail-promo-card {
+  box-shadow: 0 12px 30px rgb(34 35 32 / 10%);
+}
+
+.skills-section {
+  border-block: 1px solid var(--line);
+  background: #f5f4ef;
+}
+
+.skills-heading {
+  margin-bottom: 52px;
+}
+
+.stack-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px 52px;
+}
+
+.stack-category h3 {
+  margin: 0 0 15px;
+  color: #6a6d65;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stack-chips {
+  gap: 8px;
+}
+
+.stack-chip {
+  min-height: 34px;
+  padding: 0 11px;
+  border-color: #dfded8;
+  border-radius: 2px;
+  background: var(--paper);
+  color: #55574f;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.skills-note {
+  margin: 35px 0 0;
+  color: #777970;
+  font-size: 11px;
+}
+
+.contact-section {
+  background: #262824;
+  color: #f8f7f2;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr);
+  gap: clamp(50px, 10vw, 130px);
+  align-items: center;
+}
+
+.contact-inner .section-kicker {
+  color: #b7b9b1;
+}
+
+.contact-inner h2 {
+  max-width: 600px;
+  color: #f8f7f2;
+}
+
+.contact-copy {
+  max-width: 540px;
+  margin: 22px 0 0;
+  color: #c4c5bf;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: grid;
+  gap: 0;
+}
+
+.contact-links>a,
+.contact-placeholder {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  border-bottom: 1px solid rgb(255 255 255 / 18%);
+  color: #f8f7f2;
+  font-size: 13px;
+}
+
+.contact-links>a svg:last-child {
+  margin-left: auto;
+  color: #b6b9b0;
+}
+
+.contact-links>a:hover {
+  color: #d7ddcb;
+}
+
+.social-monogram {
+  display: inline-grid;
+  width: 18px;
+  place-items: center;
+  color: #d3d5ce;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.contact-placeholder {
+  color: #bfc0b9;
+  font-size: 11px;
+}
+

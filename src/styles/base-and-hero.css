@@ -1,0 +1,253 @@
+
+:root {
+  --ink: #20211f;
+  --muted: #656760;
+  --paper: #fbfaf7;
+  --green: #555;
+  --green-dark: #292929;
+  --line: #e4e2dc;
+  --accent: #65735f;
+  --serif: "DM Serif Display", Georgia, serif;
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  color: white;
+  background: var(--green);
+}
+
+.page-width {
+  width: min(1000px, calc(100% - 54px));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 80px;
+}
+
+body {
+  background-color: #f8f8f7;
+  background-image: radial-gradient(circle, rgb(42 42 42 / 13%) 0.65px, transparent 0.85px);
+  background-size: 16px 16px;
+  background-position: 0 0;
+}
+
+.hero {
+  width: min(860px, calc(100% - 48px));
+  min-height: 560px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(24px, 3.5vw, 40px);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 430px;
+  justify-self: start;
+}
+
+.hero h1,
+.section-heading h2 {
+  margin: 0 0 22px;
+  font-family: var(--serif);
+  font-size: clamp(52px, 5vw, 82px);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: 0.95;
+}
+
+.hero h1 {
+  margin-bottom: 18px;
+  font-family: "Press Start 2P", "SFMono-Regular", monospace;
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+.hero h1 span,
+.section-heading h2 span {
+  color: var(--green);
+}
+
+.hero-description {
+  margin: 0;
+  max-width: 430px;
+  color: rgba(36, 41, 35, 0.7);
+  font-size: clamp(16px, 1.65vw, 20px);
+  line-height: 1.5;
+}
+
+.hero-description-large {
+  max-width: 470px;
+}
+
+.hero-socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+  color: rgba(36, 41, 35, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.hero-socials a {
+  transition: color 0.2s ease;
+}
+
+.hero-socials a:hover {
+  color: var(--green);
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.hero-visual-clean {
+  min-height: 0;
+}
+
+.portrait-art {
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 0.9;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  background: transparent;
+  overflow: hidden;
+}
+
+.portrait-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: grayscale(1) contrast(1.08) brightness(1.02);
+}
+
+.hero-note {
+  position: absolute;
+  top: 5%;
+  right: 1%;
+  z-index: 2;
+  padding: 15px 18px;
+  transform: rotate(7deg);
+  border: 1px solid #e6e1d5;
+  background: #faf1dc;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 5%);
+  color: #4b5149;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.hero-note span {
+  color: #828878;
+  font-size: 12px;
+}
+
+.hero-note em {
+  color: var(--green);
+}
+
+.hero-coordinates {
+  position: absolute;
+  left: 3%;
+  bottom: 11%;
+  color: #9da095;
+  font-size: 9px;
+  letter-spacing: .11em;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 31px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #92968c;
+  font-size: 10px;
+}
+
+.scroll-cue span {
+  width: 34px;
+  height: 1px;
+  background: #b6b9ae;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    width: min(640px, calc(100% - 40px));
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 36px;
+    padding-bottom: 48px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-description,
+  .hero-description-large {
+    max-width: 100%;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 0;
+    order: -1;
+  }
+
+  .portrait-art {
+    width: min(100%, 340px);
+  }
+}
+

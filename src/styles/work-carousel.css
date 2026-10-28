@@ -1,0 +1,161 @@
+/* The homepage work section uses a layered project-card fan; the all-projects
+   page keeps its independent grid layout. */
+.work-section .featured-project-grid {
+  position: relative;
+  display: block;
+  height: 570px;
+  margin: 0 auto;
+  isolation: isolate;
+  perspective: 1200px;
+}
+
+.work-section {
+  overflow: clip;
+}
+
+.work-section .featured-project-card {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: clamp(280px, 40%, 400px);
+  height: 500px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform-origin: center 70%;
+  transition: transform .45s cubic-bezier(.2, .75, .25, 1), opacity .35s ease, filter .35s ease;
+}
+
+.work-section .featured-project-card.is-center {
+  z-index: 3;
+  transform: translateX(-50%) rotate(0) scale(1);
+}
+
+.work-section .featured-project-card.is-left,
+.work-section .featured-project-card.is-right {
+  z-index: 1;
+  top: 82px;
+  width: clamp(260px, 36%, 360px);
+  opacity: .76;
+  filter: saturate(.78);
+}
+
+.work-section .featured-project-card.is-left {
+  left: 25%;
+  transform: translateX(-50%) rotate(-11deg) scale(.86);
+}
+
+.work-section .featured-project-card.is-right {
+  left: 75%;
+  transform: translateX(-50%) rotate(11deg) scale(.86);
+}
+
+.work-section .featured-project-card:hover,
+.work-section .featured-project-card:focus-visible {
+  z-index: 5;
+  opacity: 1;
+  filter: none;
+}
+
+.work-section .featured-project-card.is-left:hover,
+.work-section .featured-project-card.is-left:focus-visible {
+  transform: translateX(-50%) rotate(-5deg) scale(.92);
+}
+
+.work-section .featured-project-card.is-right:hover,
+.work-section .featured-project-card.is-right:focus-visible {
+  transform: translateX(-50%) rotate(5deg) scale(.92);
+}
+
+.work-section .featured-project-card .sab-website-card,
+.work-section .featured-project-card .converse-promo-card,
+.work-section .featured-project-card .retail-promo-card {
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  .work-section .featured-project-grid {
+    height: 530px;
+  }
+
+  .work-section .featured-project-card {
+    width: clamp(260px, 50%, 340px);
+    height: 450px;
+  }
+
+  .work-section .featured-project-card.is-left,
+  .work-section .featured-project-card.is-right {
+    top: 72px;
+    width: clamp(240px, 46%, 320px);
+  }
+
+  .work-section .featured-project-card.is-left {
+    left: 24%;
+  }
+
+  .work-section .featured-project-card.is-right {
+    left: 76%;
+  }
+}
+
+@media (max-width: 560px) {
+  .work-section .featured-project-grid {
+    width: calc(100% + 8px);
+    height: 460px;
+    margin-left: -4px;
+  }
+
+  .work-section .featured-project-card {
+    top: 16px;
+    width: min(82%, 280px);
+    height: 390px;
+  }
+
+  .work-section .featured-project-card.is-left,
+  .work-section .featured-project-card.is-right {
+    top: 60px;
+    width: min(74%, 260px);
+  }
+
+  .work-section .featured-project-card.is-left {
+    left: 18%;
+  }
+
+  .work-section .featured-project-card.is-right {
+    left: 82%;
+  }
+
+  .work-section .featured-project-card.is-left {
+    transform: translateX(-50%) rotate(-9deg) scale(.84);
+  }
+
+  .work-section .featured-project-card.is-right {
+    transform: translateX(-50%) rotate(9deg) scale(.84);
+  }
+
+  .work-section .featured-project-card.is-left:hover,
+  .work-section .featured-project-card.is-left:focus-visible {
+    transform: translateX(-50%) rotate(-4deg) scale(.9);
+  }
+
+  .work-section .featured-project-card.is-right:hover,
+  .work-section .featured-project-card.is-right:focus-visible {
+    transform: translateX(-50%) rotate(4deg) scale(.9);
+  }
+
+  .work-section .featured-project-card .sab-website-card,
+  .work-section .featured-project-card .converse-promo-card,
+  .work-section .featured-project-card .retail-promo-card {
+    padding: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-section .featured-project-card {
+    transition: none;
+  }
+}
